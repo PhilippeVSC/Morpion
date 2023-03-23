@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Morpion</title>
+</head>
+<body>
+    <header>
+        <p>MORPION</p>
+    </header>
+    <main>
+        <section class="score">
+            <div class="x_score">
+                <div class="x_icon">
+                    <img src="src/img/x.svg" draggable="false">
+                </div>
+                <p class="score_x_val">0</p>
+            </div>
+            <div class="o_score">
+                <div class="o_icon">
+                    <img src="src/img/o.svg" draggable="false">
+                </div>
+                <p class="score_o_val">0</p>
+            </div>
+        </section>
+            <div class="score_info">
+                <div class="icon_container">
+                    <img class="score_img" draggable="false">
+                </div>
+                <p class="score_text"></p>
+            </div>
+            <div class="game">
+                <button class="game_button" onclick="btn(0)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(1)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(2)"><img class="game_img" draggable="false"></button>
+
+                <button class="game_button" onclick="btn(3)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(4)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(5)"><img class="game_img" draggable="false"></button>
+
+                <button class="game_button" onclick="btn(6)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(7)"><img class="game_img" draggable="false"></button>
+                <button class="game_button" onclick="btn(8)"><img class="game_img" draggable="false"></button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
