@@ -12,7 +12,16 @@
         <p>MORPION</p>
     </header>
     <main>
-        <section class="score">
+        <section id="score_info">
+            <div class="score_info">
+                <div class="icon_container">
+                    <img class="score_img" draggable="false">
+                </div>
+                <p class="score_text"></p>
+            </div>
+        </section>
+        
+        <section id="score">
             <div class="x_score">
                 <div class="x_icon">
                     <img src="src/img/x.svg" draggable="false">
@@ -26,12 +35,8 @@
                 <p class="score_o_val">0</p>
             </div>
         </section>
-            <div class="score_info">
-                <div class="icon_container">
-                    <img class="score_img" draggable="false">
-                </div>
-                <p class="score_text"></p>
-            </div>
+
+        <section id="game">
             <div class="game">
                 <button class="game_button" onclick="btn(0)"><img class="game_img" draggable="false"></button>
                 <button class="game_button" onclick="btn(1)"><img class="game_img" draggable="false"></button>
