@@ -14,6 +14,12 @@ var grid = [
     [{},{},{}]
 ];
 
+function darkmode() {
+    console.log('i');
+    var myDiv = document.getElementsByClassName('darkmode-toggle')[0]; // Récupérer la div cible
+    myDiv.classList.toggle('active');
+}
+
 const o_img = 'src/img/o.svg'
 const x_img = 'src/img/x.svg'
 

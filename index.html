@@ -9,9 +9,21 @@
 </head>
 <body>
     <header>
-        <p>MORPION</p>
+        <a href="#" class="return-portfolio">
+            <img src="src/img/arrow-left-solid.svg">
+            <h1>Portfolio</h1>
+        </a>
+        <div class="header-morpion">
+            <img src="src/img/morpion-icon.svg">
+            <h1>Morpion</h1>
+        </div>
+        <div class="darkmode-toggle" onclick="darkmode()">
+            <div class="button active"></div>
+        </div>
     </header>
+
     <main>
+        <!--
         <section id="score_info">
             <div class="score_info">
                 <div class="icon_container">
@@ -20,8 +32,8 @@
                 <p class="score_text"></p>
             </div>
         </section>
-        
-        <section id="score">
+        -->
+        <section id="scoreboard">
             <div class="x_score">
                 <div class="x_icon">
                     <img src="src/img/x.svg" draggable="false">
@@ -52,7 +64,21 @@
             </div>
         </section>
     </main>
-
+    <footer>
+        <div class="description">
+            <p>
+                Le Morpion est un jeu de plateau classique, également
+                connu sous le nom de Tic-Tac-Toe, réalisé en utilisant les technologies
+                web standards telles que HTML, CSS et JavaScript. Le jeu est basé sur une
+                grille dynamique générée en JavaScript, où les joueurs peuvent placer
+                leur symbole (X ou O) sur une case en cliquant dessus. Le code vérifie
+                ensuite automatiquement les lignes verticales, horizontales et diagonales
+                pour détecter si l'un des joueurs a remporté la partie. En cas d'égalité, 
+                le code compte le nombre de tours et déclare une égalité si aucun joueur
+                n'a gagné après 9 tours.
+            </p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
