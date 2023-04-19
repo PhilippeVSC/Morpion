@@ -17,7 +17,10 @@ var grid = [
 function darkmode() {
     console.log('i');
     var myDiv = document.getElementsByClassName('darkmode-toggle')[0]; // Récupérer la div cible
+    var body = document.body;
+
     myDiv.classList.toggle('active');
+    body.classList.toggle('lightmode');
 }
 
 const o_img = 'src/img/o.svg'
@@ -55,7 +58,7 @@ function placeSymbol(button, symbol) {
         case 'X':
             img[button].style.display = 'block';
             img[button].src = x_img;
-            img[button].classList.add('green')
+            img[button].classList.add('green');
         break;
         case 'O':
             img[button].style.display = 'block';

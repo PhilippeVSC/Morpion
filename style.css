@@ -9,13 +9,13 @@
 
 :root {
     --black: #272E4F;
-    --white: #F2F2F0;
     --green: #BCEB3C;
     --purple: #A58BFF;
 
-    --gray: #808080;
+    --text-color: #F2F2F0;
+    --text-color2: #808080;
     --background-color: #080705;
-    --header-color: #0c0b08;
+    --header-color: #0e0d0a;
 
     --header-height: 50px;
 
@@ -25,25 +25,64 @@
     --filter_purple: invert(51%) sepia(89%) saturate(667%) hue-rotate(213deg) brightness(101%) contrast(102%);
 }
 
+.lightmode {
+    --text-color: #0d0b25;
+    --text-color2: #2a2a2a;
+    --background-color: #ffffff;
+    --header-color: #bdbdbd;
+}
+
 body {
     background-color: var(--background-color);
 }
 
+/*-------- Header --------*/
 header {
     background-color: var(--header-color);
     position: fixed;
     top: 0;
     width: 100vw;
     height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding-right: 20px;
     padding-left: 20px;
 }
 
+nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.return-portfolio-container,
+.header-morpion-container,
+.darkmode-toggle-container {
+    width: calc(100% / 3);
+    align-items: center;
+}
+
+.header-morpion-container {
+    display: flex;
+    justify-content: center;
+}
+
+.darkmode-toggle-container {
+    display: flex;
+    justify-content: right;
+}
+
 a {
     text-decoration: none;
+}
+
+header img {
+    width: 24px;
+    margin-right: 6px;
+    filter: var(--filter_white);
+}
+
+header .return-portfolio img {
+    transition: 500ms;
 }
 
 header div {
@@ -54,33 +93,21 @@ header div {
 header .return-portfolio {
     display: flex;
     flex-direction: row;
-    flex-basis: 100px;
 }
 
 header .return-portfolio:hover h1 {
-    color: var(--gray);
+    color: var(--text-color2);
 }
 
 header .return-portfolio:hover img {
     filter: invert(54%) sepia(0%) saturate(52%) hue-rotate(284deg) brightness(94%) contrast(90%);
 }
 
-header .header-morpion {
-    flex-basis: 100px;
-}
-
 header h1 {
     font-family: 'Poppins';
     font-weight: 700;
     font-size: 24px;
-    color: var(--white); 
-    transition: 500ms;
-}
-
-header img {
-    width: 24px;
-    margin-right: 6px;
-    filter: var(--filter_white);
+    color: var(--text-color); 
     transition: 500ms;
 }
 
@@ -94,18 +121,14 @@ header .darkmode-toggle {
     padding-left: 6px;
     padding-right: 6px;
     cursor: pointer;
-}
-
-.header .darkmode-toggle::before {
-    content: "";
-    flex-basis: 100px; /* Définir la taille de base à 500px - largeur du contenu et des paddings */
+    transition: 300ms;
 }
 
 header .darkmode-toggle .button {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: var(--white);
+    background-color: var(--text-color);
     transform: translateX(0);
     transition: 300ms ease-in-out;
 }
@@ -114,33 +137,73 @@ header .darkmode-toggle.active .button {
     transform: translateX(140%);
 }
 
+/*-------- Main --------*/
 main {
     margin-top: var(--header-height);
+    height: calc(100vh - var(--header-height));
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    height: fit-content;
-    display: flex;
     justify-content: center;
-    padding-bottom: 50px;
 }
 
-footer .description {
-    width: 1200px;
+.game {
+    width: 500px;
+    height: 500px;
     display: flex;
-    margin-top: 50px;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: var(--text-color2);
 }
 
-footer .description p {
+.game_button {
+    position: relative;
+    background-color: var(--background-color);
+    width: calc((100% - 10px) / 3);
+    height: calc((100% - 10px) / 3);
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game_img {
+    width: 80%;
+    height: 80%;
+    display: none;
+  }
+
+.game_img.purple {
+    filter: var(--filter_purple);
+    width: 74%;
+    height: 74%;
+}
+
+.game_img.green {
+    filter: var(--filter_green);
+}
+
+main .description {
+    margin-top: 100px;
+    width: 1100px;
+    display: flex;
+    text-align: justify;
+}
+
+main .description p {
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 14px;
-    color: var(--gray);
+    margin: 0;
+    color: var(--text-color2);
+}
+
+main .scoreboard {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: red;
+    width: 100px;
+    height: 100px;
 }

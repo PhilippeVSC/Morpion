@@ -9,46 +9,42 @@
 </head>
 <body>
     <header>
-        <a href="#" class="return-portfolio">
-            <img src="src/img/arrow-left-solid.svg">
-            <h1>Portfolio</h1>
-        </a>
-        <div class="header-morpion">
-            <img src="src/img/morpion-icon.svg">
-            <h1>Morpion</h1>
-        </div>
-        <div class="darkmode-toggle" onclick="darkmode()">
-            <div class="button active"></div>
-        </div>
+        <nav>
+            <div class="return-portfolio-container">
+                <a href="#" class="return-portfolio">
+                    <img src="src/img/arrow-left-solid.svg" draggable="false">
+                    <h1>Portfolio</h1>
+                </a>
+            </div>
+            <div class="header-morpion-container">
+                <div class="header-morpion">
+                    <img src="src/img/morpion-icon.svg" draggable="false">
+                    <h1>Morpion</h1>
+                </div>
+            </div>
+            <div class="darkmode-toggle-container">
+                <div class="darkmode-toggle" onclick="darkmode()">
+                    <div class="button active"></div>
+                </div>
+            </div>
+        </nav>
     </header>
-
     <main>
-        <!--
-        <section id="score_info">
-            <div class="score_info">
-                <div class="icon_container">
-                    <img class="score_img" draggable="false">
+        <section class="scoreboard">
+            <div class="player1">
+                <div class="player-icon">
+                    <img src="src/img/x.svg">
                 </div>
-                <p class="score_text"></p>
+                <p>0</p>
+            </div>
+            <div class="player2">
+                <div class="player-icon">
+                    <img src="src/img/o.svg">
+                </div>
+                <p>0</p>
             </div>
         </section>
-        -->
-        <section id="scoreboard">
-            <div class="x_score">
-                <div class="x_icon">
-                    <img src="src/img/x.svg" draggable="false">
-                </div>
-                <p class="score_x_val">0</p>
-            </div>
-            <div class="o_score">
-                <div class="o_icon">
-                    <img src="src/img/o.svg" draggable="false">
-                </div>
-                <p class="score_o_val">0</p>
-            </div>
-        </section>
-
-        <section id="game">
+        <section class="game-container">
             <div class="game">
                 <button class="game_button" onclick="btn(0)"><img class="game_img" draggable="false"></button>
                 <button class="game_button" onclick="btn(1)"><img class="game_img" draggable="false"></button>
@@ -63,9 +59,7 @@
                 <button class="game_button" onclick="btn(8)"><img class="game_img" draggable="false"></button>
             </div>
         </section>
-    </main>
-    <footer>
-        <div class="description">
+        <section class="description">
             <p>
                 Le Morpion est un jeu de plateau classique, également
                 connu sous le nom de Tic-Tac-Toe, réalisé en utilisant les technologies
@@ -77,8 +71,8 @@
                 le code compte le nombre de tours et déclare une égalité si aucun joueur
                 n'a gagné après 9 tours.
             </p>
-        </div>
-    </footer>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
