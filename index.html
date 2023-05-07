@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <title>Morpion</title>
 </head>
-<body>
+<body class="lightmode">
     <header>
         <nav>
             <div class="return-portfolio-container">
-                <a href="#" class="return-portfolio">
+                <a href="../../" class="return-portfolio">
                     <img src="src/img/arrow-left-solid.svg" draggable="false">
                     <h1>Portfolio</h1>
                 </a>
@@ -72,6 +72,15 @@
                 n'a gagné après 9 tours.
             </p>
         </section>
+        <dialog class="modal">
+            <div class="player-info-container">
+                <div class="img-container">
+                    <img>
+                </div>
+                <p></p>
+            </div>
+            <button onclick="closeModal()">Rejouer</button>
+        </dialog>
     </main>
     <script src="script.js"></script>
 </body>

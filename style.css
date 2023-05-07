@@ -15,7 +15,9 @@
     --text-color: #F2F2F0;
     --text-color2: #808080;
     --background-color: #080705;
-    --header-color: #0e0d0a;
+    --morpion-bg-color: #171717;
+    --darkmode-bg-color: #1a1a1a;
+    --darkmode-btn-color: #fff39a;
 
     --header-height: 50px;
 
@@ -29,7 +31,14 @@
     --text-color: #0d0b25;
     --text-color2: #2a2a2a;
     --background-color: #ffffff;
-    --header-color: #bdbdbd;
+    --morpion-bg-color: #2a2a2a;
+    --darkmode-bg-color: #e3e3e6;
+    --darkmode-btn-color: #272E4F;
+
+    --filter_black: invert(100%) sepia(100%) saturate(0%) hue-rotate(80deg) brightness(102%) contrast(102%);
+    --filter_white: invert(13%) sepia(47%) saturate(797%) hue-rotate(192deg) brightness(99%) contrast(88%);
+    --filter_green: invert(74%) sepia(91%) saturate(341%) hue-rotate(23deg) brightness(99%) contrast(99%);
+    --filter_purple: invert(51%) sepia(89%) saturate(667%) hue-rotate(213deg) brightness(101%) contrast(102%);
 }
 
 body {
@@ -38,13 +47,14 @@ body {
 
 /*-------- Header --------*/
 header {
-    background-color: var(--header-color);
     position: fixed;
     top: 0;
     width: 100vw;
     height: var(--header-height);
+    background-color: var(--background-color);
     padding-right: 20px;
     padding-left: 20px;
+    z-index: 4;
 }
 
 nav {
@@ -76,8 +86,8 @@ a {
 }
 
 header img {
-    width: 24px;
-    margin-right: 6px;
+    width: 22px;
+    margin-right: 8px;
     filter: var(--filter_white);
 }
 
@@ -95,12 +105,23 @@ header .return-portfolio {
     flex-direction: row;
 }
 
-header .return-portfolio:hover h1 {
-    color: var(--text-color2);
+header .return-portfolio:hover img {
+    animation-name: grow-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
 
-header .return-portfolio:hover img {
-    filter: invert(54%) sepia(0%) saturate(52%) hue-rotate(284deg) brightness(94%) contrast(90%);
+@keyframes grow-animation {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(0.9);
+    }
 }
 
 header h1 {
@@ -114,7 +135,7 @@ header h1 {
 header .darkmode-toggle {
     width: 60px;
     height: 28px;
-    background-color: var(--background-color);
+    background-color: var(--darkmode-bg-color);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -128,7 +149,7 @@ header .darkmode-toggle .button {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: var(--text-color);
+    background-color: var(--darkmode-btn-color);
     transform: translateX(0);
     transition: 300ms ease-in-out;
 }
@@ -153,7 +174,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    background-color: var(--text-color2);
+    background-color: var(--morpion-bg-color);
 }
 
 .game_button {
@@ -166,6 +187,46 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.game_button:nth-child(1){
+    border-bottom-right-radius: 10px;
+}
+
+.game_button:nth-child(2){
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.game_button:nth-child(3){
+    border-bottom-left-radius: 10px;
+}
+
+.game_button:nth-child(4){
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.game_button:nth-child(5){
+    border-radius: 10px;
+}
+
+.game_button:nth-child(6){
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.game_button:nth-child(7){
+   border-top-right-radius: 10px;
+}
+
+.game_button:nth-child(8){
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+ .game_button:nth-child(9){
+    border-top-left-radius: 10px;
 }
 
 .game_img {
@@ -187,23 +248,249 @@ main {
 main .description {
     margin-top: 100px;
     width: 1100px;
-    display: flex;
     text-align: justify;
 }
 
 main .description p {
     font-family: 'Poppins';
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
     color: var(--text-color2);
 }
 
 main .scoreboard {
     position: absolute;
-    top: 50%;
-    left: 0;
+    top: 43%;
+    left: 30px;
+    transform: translateY(-50%);
+    width: fit-content;
+    height: fit-content;
+}
+
+main .scoreboard p {
+    margin-left: 14px;
+    font-family: 'Poppins';
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 24px;
+}
+
+main .scoreboard div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+main .scoreboard .player-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: red;
-    width: 100px;
-    height: 100px;
+    border-radius: 50%;
+}
+
+main .scoreboard .player1 {
+    margin-bottom: 20px;
+}
+
+main .scoreboard .player-icon {
+    width: 60px;
+    height: 60px;
+}
+
+main .scoreboard .player1 .player-icon {
+    background-color: var(--green);
+}
+
+main .scoreboard .player2 .player-icon {
+    background-color: var(--purple);
+}
+
+body.lightmode main .scoreboard img {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(80deg) brightness(102%) contrast(102%);
+}
+
+main .scoreboard img {
+    width: 68%;
+    filter: invert(2%) sepia(11%) saturate(1290%) hue-rotate(2deg) brightness(91%) contrast(98%);
+}
+
+main .scoreboard .player1 img {
+    width: 54%;
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    width: min(510px, calc(100vh - 40px));
+    height: fit-content;
+    background-color: var(--background-color);
+    border: 3px solid var(--morpion-bg-color);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+dialog .img-container {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+dialog .player-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+dialog.p1 .img-container {
+    background-color: var(--green);
+}
+
+dialog.p2 .img-container {
+    background-color: var(--purple);
+}
+
+body.lightmode dialog img {
+    width: 80%;
+    height: 80%;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(80deg) brightness(102%) contrast(102%);
+}
+
+body dialog img {
+    width: 80%;
+    height: 80%;
+    filter: invert(2%) sepia(11%) saturate(1290%) hue-rotate(2deg) brightness(91%) contrast(98%);
+}
+
+
+dialog p {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--text-color);
+    width: calc(100% - 60px);
+}
+
+dialog button {
+    margin-top: 20px;
+    width: 50%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 3px solid var(--green);
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-color);
+    opacity: 1;
+    transition: 300ms;
+}
+
+dialog button:hover {
+    background-color: var(--green);
+}
+
+body dialog button:hover {
+    color: var(--background-color);
+}
+
+body.lightmode dialog button:hover {
+    color: var(--text-color);
+}
+
+@media (max-width: 1250px) {
+    main {
+        height: fit-content
+    }
+
+    .game {
+        margin-top: 50px;
+    }
+
+    main .description {
+        margin-top: 100px;
+        width: min(1100px, calc(100vw - 40px));
+        order: 3;
+        margin-bottom: 20px;
+    }
+
+    dialog {
+        top: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    dialog {
+        top: 50%;
+    }
+
+    main .scoreboard {
+        position: relative;
+        display: flex;
+        top: 0;
+        left: 0;
+        transform: translateY(0);
+        order: 2;
+        margin-top: 60px;
+    }
+
+    main .scoreboard .player1 {
+        margin: 0;
+        margin-right: 20vw;
+    }
+
+    .return-portfolio h1 {
+        display: none;
+    }
+
+    header .darkmode-toggle {
+        width: 50px;
+        height: 24px;
+        background-color: var(--darkmode-bg-color);
+    }
+
+    header .darkmode-toggle .button {
+        width: 16px;
+        height: 16px;
+    }
+
+    .header-morpion img {
+        display: none;
+    }
+
+    main {
+        align-items: center;
+        justify-content: start;
+    }
+
+    main .description {
+        margin-top: 10vw;
+    }
+
+    .game {
+        margin-top: 8vw;
+        width: min(500px, calc(100vw - 40px));
+        height: min(500px, calc(100vw - 40px));
+    }
+
+    main .scoreboard {
+        margin-top: 10vw;
+    }
 }

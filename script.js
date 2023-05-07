@@ -1,3 +1,12 @@
+function darkmode() {
+    console.log('i');
+    var myDiv = document.getElementsByClassName('darkmode-toggle')[0]; // Récupérer la div cible
+    var body = document.body;
+
+    myDiv.classList.toggle('active');
+    body.classList.toggle('lightmode');
+}
+
 const button = document.getElementsByClassName('game_button');
 const img = document.getElementsByClassName('game_img');
 
@@ -13,15 +22,6 @@ var grid = [
     [{},{},{}],
     [{},{},{}]
 ];
-
-function darkmode() {
-    console.log('i');
-    var myDiv = document.getElementsByClassName('darkmode-toggle')[0]; // Récupérer la div cible
-    var body = document.body;
-
-    myDiv.classList.toggle('active');
-    body.classList.toggle('lightmode');
-}
 
 const o_img = 'src/img/o.svg'
 const x_img = 'src/img/x.svg'
@@ -157,64 +157,73 @@ function winCheck(x, y) {
 }
 
 function win(symbol) {
-    let score_text = document.getElementsByClassName('score_text')[0];
-    let score_icon = document.getElementsByClassName('score_img')[0];
-    let score_background = document.getElementsByClassName('icon_container')[0];
-
     switch(symbol) {
         case 'X':
-            score_text.innerHTML = 'remporte la partie';
-            score_icon.src = 'src/img/x.svg';
-            score_background.style.display = 'flex';
-            score_background.style.backgroundColor = '#BCEB3C';
+            openModal('x');
 
             score_x++
-            document.getElementsByClassName('score_x_val')[0].innerHTML = score_x
+            document.querySelector(".player1 p").innerHTML = score_x
         break;
         case 'O':
-            score_text.innerHTML = 'remporte la partie';
-            score_icon.src = 'src/img/o.svg';
-            score_background.style.display = 'flex';
-            score_background.style.backgroundColor = '#A58BFF';
+            openModal('o');
 
             score_o++
-            document.getElementsByClassName('score_o_val')[0].innerHTML = score_o
+            document.querySelector('.player2 p').innerHTML = score_o
         break;
         case 'nul':
-            score_text.innerHTML = 'Égalité';
-            score_icon.src = '';
-            score_background.style.display = 'none';
-
-            console.log('égalité');
+            openModal('nul');
         break;
     }
-
-    setTimeout(() => {
-        score_text.innerHTML = '';
-        score_icon.src = '';
-        score_background.style.display = 'none';
-    }, 2500);
-
-    state = 'end';
-    newGame();
 }
 
 function newGame() {
-    setTimeout(() => {
-        for(i = 0; i < 9; i++){
-            img[i].style.display = 'none';
-            img[i].src = '';
-            img[i].classList.remove('green');
-            img[i].classList.remove('purple');
-        }
+    for(i = 0; i < 9; i++){
+        img[i].style.display = 'none';
+        img[i].src = '';
+        img[i].classList.remove('green');
+        img[i].classList.remove('purple');
+    }
 
-        grid = [
-            [{},{},{}],
-            [{},{},{}],
-            [{},{},{}]
-        ];
+    grid = [
+        [{},{},{}],
+        [{},{},{}],
+        [{},{},{}]
+    ];
 
-        turn = 0;
-        state = 'play';
-    }, 2500);
+    turn = 0;
+    state = 'play';
+}
+
+const alert_box = document.querySelector('.modal');
+const alert_box_p = document.querySelector("dialog.modal p");
+const alert_box_img_container = document.querySelector('.img-container');
+const alert_box_img = document.querySelector("dialog.modal img");
+
+function openModal(winner) {
+    alert_box.classList.remove('p1');
+    alert_box.classList.remove('p2');
+
+    if(winner == 'x') {
+        alert_box.classList.add('p1');
+        alert_box_p.innerHTML = 'Le joueur 1 remporte la partie !'
+        alert_box_img_container.style.display = 'flex';
+        alert_box_img.src = 'src/img/x.svg';
+    } else if(winner == 'o') {
+        alert_box.classList.add('p2');
+        alert_box_p.innerHTML = 'Le joueur 2 remporte la partie !'
+        alert_box_img_container.style.display = 'flex';
+        alert_box_img.src = 'src/img/o.svg';
+    } else {
+        alert_box_p.innerHTML = 'Egalité !'
+        alert_box_img.src = '';
+        alert_box_img_container.style.display = 'none';
+    }
+    alert_box.style.display = 'flex';
+    alert_box.showModal();
+}
+
+function closeModal() {
+    alert_box.close();
+    alert_box.style.display = 'none';
+    newGame();
 }
